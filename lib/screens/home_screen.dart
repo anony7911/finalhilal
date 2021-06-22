@@ -8,22 +8,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Color _bgColor = Color(0xFF252837);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.mainColor,
+      backgroundColor: _bgColor,
       appBar: AppBar(
-        backgroundColor: AppColor.mainColor,
-        elevation: 0.0,
-        title: Text("Chat"),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.search),
-        ),
-        actions: [IconButton(icon: Icon(Icons.menu), onPressed: () {},)]
-      ),
-
+          backgroundColor: AppColor.mainColor,
+          elevation: 0.0,
+          title: Text("Chat"),
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {},
+            )
+          ]),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -38,7 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Expanded(child: ListView.builder(
+            Expanded(
+                child: ListView.builder(
               itemCount: Message.messages.length,
               itemBuilder: (context, index) {
                 return ListTile(
@@ -47,9 +52,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         arguments: Message.messages[index]);
                   },
                   horizontalTitleGap: 4.0,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
                   leading: CircleAvatar(
-                    backgroundImage: NetworkImage(Message.messages[index].avatar),
+                    backgroundImage:
+                        NetworkImage(Message.messages[index].avatar),
                     radius: 32.0,
                   ),
                   title: Text(
@@ -71,16 +78,27 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
           ],
         ),
-      
       ),
-
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Change Background',
+        onPressed: () {
+          setState(() {
+            _bgColor = Color(0xFF777cfe);
+          });
+        },
+        child: Icon(Icons.change_circle),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColor.mainColor,
         items: [
           BottomNavigationBarItem(
-            title: Text("Person"), icon: Icon(Icons.person)),
+              tooltip: 'Person',
+              title: Text("Person"),
+              icon: Icon(Icons.person)),
           BottomNavigationBarItem(
-            title: Text("Settings"), icon: Icon(Icons.settings)),
+              tooltip: 'Settings',
+              title: Text("Settings"),
+              icon: Icon(Icons.settings)),
         ],
       ),
     );

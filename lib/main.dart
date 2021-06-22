@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:finalhilal/screens/home_screen.dart';
 import 'package:finalhilal/screens/chat_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context)=>HomeScreen(),
-        '/ChatScreen': (context)=>ChatScreen()
+        '/': (context) => HomeScreen(),
+        '/ChatScreen': (context) => ChatScreen()
       },
     );
   }

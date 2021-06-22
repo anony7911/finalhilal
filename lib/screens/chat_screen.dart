@@ -85,7 +85,7 @@ Widget chatBox(String text, bool isFromMe) {
                     bottomLeft: Radius.circular(0.0),
                     bottomRight: Radius.circular(12.0))),
         child: Text(text, style: TextStyle(color: Colors.white)),
-      )
+      ),
     ],
   );
 }
